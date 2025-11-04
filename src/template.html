@@ -20,6 +20,26 @@
                 <h1 id="current-project-name">
                 </h1>
                 <button id="add-todo-btn">+ New ToDo</button>
+
+                <form id="ToDoForm">
+                    <label for="name">Name:</label>
+                    <input type="text" name="name">
+                    <label for="description">Description:</label>
+                    <input type="text" name="description" >
+                    <label for="date">Due date:</label>
+                    <input type="date" name="dueDate">
+                    <label for="priority">Priority</label>
+                    <input type="text" name="priority" min="1" max="10" >
+                    <label for="notes">Notes:</label>
+                    <input type="text" name="notes">
+                    <label for="completed">Completed?</label>
+                    <input type="checkbox" >
+                    <div class="buttons">
+                    <button type="submit">Submit</button>
+                    <button id="cancel" type="button">Cancel</button>
+                    </div>
+                </form>
+
             </div>
             <ul id="todos-list">
 

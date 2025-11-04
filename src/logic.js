@@ -121,8 +121,8 @@
             // ONLY ONE PROJECT MANAGER: SINGLETON PATTERN
             const manager = new ProjectManager()
             manager.addProject("Default");
-            manager.setCurrentProject(0);  //id 0 since it's the first project.
-
+            manager.setCurrentProject(0); //id 0 since it's the first project.
+            
             export default manager
         
 

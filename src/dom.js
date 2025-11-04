@@ -1,5 +1,6 @@
 import manager from "./logic";
 
+const ToDoForm = document.getElementById("ToDoForm")
 const app = document.getElementById("app")
 const sidebar = document.getElementById("sidebar")
 const addNewProject = document.getElementById("add-new-project");
@@ -37,20 +38,63 @@ renderProjects();
 function renderTodos(){
     const currentProject = manager.getCurrentProject();
     const todos = currentProject.todos;
+    todosList.textContent = "";
 
-    currentProject.forEach(todos => {
+
+    todos.forEach(todo => {
 
         const todoDiv = document.createElement("div")
         todoDiv.setAttribute("class", "todos")
-        todos.textContent =
-        .appendChild(todos)
+        todo.textContent = todo.title
+        todosList.appendChild(todoDiv)
     })
 
 }
 
+function createToDo(){
+
+    ToDoForm.addEventListener("submit", function(e){
+        e.preventDefault()
+
+        const titles = ToDoForm.name.value.trim();
+        const description = ToDoForm.description.value.trim()
+        const dueDate = ToDoForm.dueDate.value.trim()
+        const priority = ToDoForm.priority.value.trim()
+        const notes = ToDoForm.notes.value.trim();
+        const completed = ToDoForm.completed.value.trim()
+        addToDo(titles,description,dueDate,priority,notes,completed)
 
 
+    })
 
+    
+}
+
+addToDoButton.addEventListener("click", createToDo)
+
+/* // Show the modal when button is clicked
+addToDoButton.addEventListener("click", () => {
+    // Show the form (remove 'hidden' class or set display)
+});
+
+// Handle form submission (add this ONCE when page loads)
+ToDoForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    
+    // Collect data
+    const title = ToDoForm.name.value.trim();
+    // ... etc
+    
+    // Add to current project
+    manager.getCurrentProject().addToDo(...);
+    
+    // Update display
+    renderTodos();
+    
+    // Hide form and reset
+    ToDoForm.reset();
+    // Hide the modal
+});
 
 
 
