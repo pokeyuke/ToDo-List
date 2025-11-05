@@ -51,49 +51,33 @@ function renderTodos(){
 
 }
 
-function createToDo(){
 
-    ToDoForm.addEventListener("submit", function(e){
-        e.preventDefault()
 
-        const titles = ToDoForm.name.value.trim();
+
+
+addToDoButton.addEventListener("click", () => {
+    ToDoForm.classList.remove("hidden")
+});
+
+
+ToDoForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    
+    
+       const titles = ToDoForm.name.value.trim();
         const description = ToDoForm.description.value.trim()
         const dueDate = ToDoForm.dueDate.value.trim()
         const priority = ToDoForm.priority.value.trim()
         const notes = ToDoForm.notes.value.trim();
-        const completed = ToDoForm.completed.value.trim()
-        addToDo(titles,description,dueDate,priority,notes,completed)
-
-
-    })
-
+        const completed = ToDoForm.completed.checked
     
-}
-
-addToDoButton.addEventListener("click", createToDo)
-
-/* // Show the modal when button is clicked
-addToDoButton.addEventListener("click", () => {
-    // Show the form (remove 'hidden' class or set display)
-});
-
-// Handle form submission (add this ONCE when page loads)
-ToDoForm.addEventListener("submit", (e) => {
-    e.preventDefault();
     
-    // Collect data
-    const title = ToDoForm.name.value.trim();
-    // ... etc
+    manager.getCurrentProject().addToDo(titles,description,dueDate,priority,notes,completed);
     
-    // Add to current project
-    manager.getCurrentProject().addToDo(...);
-    
-    // Update display
     renderTodos();
     
-    // Hide form and reset
     ToDoForm.reset();
-    // Hide the modal
+    ToDoForm.classList.add("hidden")
 });
 
 
